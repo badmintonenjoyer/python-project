@@ -1,0 +1,24 @@
+# Ignoruj środowiska wirtualne
+venv/
+ENV/
+env/
+
+# Pliki tymczasowe Pythona
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Pliki konfiguracyjne edytorów
+*.vscode/
+*.idea/
+*.swp
+
+# Pliki logów
+*.log
+
+# Screenshoty lub inne pliki testowe
+*.png
