@@ -5,7 +5,7 @@ Umożliwia wypisanie komunikatu "Hello Github" w konsoli.
 
 ![Przykładowy screenshot](screenshot.png)
 
-#Technologie 
+##Technologie 
 Projekt wykorzystuje język Python oraz jego podstawowe biblioteki
 
 ## Funkcjonalności
@@ -32,3 +32,6 @@ python src/main.py
 
 #Autorzy
 Szymon Rochowicz - [GitHub](https://github.com/badmintonenjoyer)
+
+#Kontakt
+Możliwy kontakt na mój adres e-mail: wrx86272@student.wroclaw.merito.pl
