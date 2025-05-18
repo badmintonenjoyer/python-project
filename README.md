@@ -1,9 +1,9 @@
 # Python Project
 
 Prosty projekt w języku Python demonstrujący podstawy aplikacji i wersjonowania kodu.  
-Umożliwia wypisanie komunikatu "Hej Github" w konsoli.
+Umożliwia wypisanie komunikatu "Hello Github" w konsoli.
 
-![Przykładowy screenshot](X:\Git_1\python-project\screenshot.png)
+![Przykładowy screenshot](screenshot.png)
 
 ## Funkcjonalności
 
