@@ -1,1 +1,1 @@
-print('Hej GitHub')
+print ("Hej Github, oto prosta zmiana pliku")
