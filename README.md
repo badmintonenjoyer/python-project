@@ -5,6 +5,9 @@ Umożliwia wypisanie komunikatu "Hello Github" w konsoli.
 
 ![Przykładowy screenshot](screenshot.png)
 
+#Technologie 
+Projekt wykorzystuje język Python oraz jego podstawowe biblioteki
+
 ## Funkcjonalności
 
 - Inicjalizacja projektu w Pythonie
@@ -13,7 +16,6 @@ Umożliwia wypisanie komunikatu "Hello Github" w konsoli.
 
 ## Instalacja
 
-```bash
 # Klonowanie repozytorium
 git clone https://github.com/badmintonenjoyer/python-project.git
 
