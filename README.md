@@ -5,7 +5,7 @@ Umożliwia wypisanie komunikatu "Hello Github" w konsoli.
 
 ![Przykładowy screenshot](screenshot.png)
 
-##Technologie 
+## Technologie 
 Projekt wykorzystuje język Python oraz jego podstawowe biblioteki
 
 ## Funkcjonalności
@@ -16,22 +16,22 @@ Projekt wykorzystuje język Python oraz jego podstawowe biblioteki
 
 ## Instalacja
 
-# Klonowanie repozytorium
+## Klonowanie repozytorium
 git clone https://github.com/badmintonenjoyer/python-project.git
 
-# Przejście do katalogu projektu
+## Przejście do katalogu projektu
 cd python-project
 
-# Utworzenie środowiska virtualnego
+## Utworzenie środowiska virtualnego
 python -m venv venv
 source venv/bin/activate  # Linux/MacOS
 venv\Scripts\activate     # Windows
 
-#Uruchomienie głównego skryptu 
+## Uruchomienie głównego skryptu 
 python src/main.py
 
-#Autorzy
+## Autorzy
 Szymon Rochowicz - [GitHub](https://github.com/badmintonenjoyer)
 
-#Kontakt
+## Kontakt
 Możliwy kontakt na mój adres e-mail: wrx86272@student.wroclaw.merito.pl
