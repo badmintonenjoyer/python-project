@@ -7,3 +7,7 @@ def menu():
 
 menu()
 
+def pokaz_autora():
+	print ("Autor: Szymon Rochowicz")
+
+pokaz_autora()
