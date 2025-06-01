@@ -30,6 +30,19 @@ venv\Scripts\activate     # Windows
 ## Uruchomienie głównego skryptu 
 python src/main.py
 
+## Funkcja poteguj
+
+Funkcja `poteguj(x, n)` zwraca wartość `x` podniesioną do potęgi `n`.
+
+Przykład użycia:
+
+python:
+
+from kalkulator import poteguj
+
+print(poteguj(2, 3))  # wynik: 8
+
+
 ## Autorzy
 Szymon Rochowicz - [GitHub](https://github.com/badmintonenjoyer)
 
