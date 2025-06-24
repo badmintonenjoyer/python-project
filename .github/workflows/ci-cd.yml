@@ -42,3 +42,14 @@ jobs:
           app-name: badmintonenjoyer-python
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
+
+      - name: Health check - verify app is up
+        run: |
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" badmintonenjoyer-python-a7b8frccccbygcbp.polandcentral-01.azurewebsites.net)
+          echo "HTTP Status: $STATUS_CODE"
+          if [[ $STATUS_CODE -lt 200 || $STATUS_CODE -ge 400 ]]; then
+            echo "Health check failed"
+            exit 1
+          else
+            echo "Health check succeeded"
+          fi
