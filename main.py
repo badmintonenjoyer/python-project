@@ -6,9 +6,10 @@ app = Flask(__name__)
 def home():
     return "Hello from CI/CD deployed app!"
 
-@app.route("/health")
-def health():
-    return "OK", 200
+@app.route("/")
+def home():
+    return "Hello from Azure!"
+
 
 if __name__ == "__main__":
     app.run()
