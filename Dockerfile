@@ -1,5 +1,5 @@
 # Używamy oficjalnego obrazu Pythona
-FROM python:3.10-slim
+FROM python:3.12-slim
 
 # Ustawiamy katalog roboczy w kontenerze
 WORKDIR /app
@@ -11,5 +11,5 @@ COPY . /app
 RUN pip install --upgrade pip
 RUN pip install pytest flake8
 
-# Domyślna komenda (możesz ją zmienić)
+# Domyślna komenda
 CMD ["python", "--version"]
