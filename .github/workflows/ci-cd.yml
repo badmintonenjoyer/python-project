@@ -45,7 +45,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build-test-lint
+    needs: build-test-lint  # lub build-docker-image, jeśli chcesz tylko po buildzie Dockera
 
     if: github.ref == 'refs/heads/main'
 
