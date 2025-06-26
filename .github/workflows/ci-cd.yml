@@ -45,7 +45,7 @@ jobs:
 
       - name: Health check - verify app is up
         run: |
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" badmintonenjoyer-python-a7b8frccccbygcbp.polandcentral-01.azurewebsites.net)
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" badmintonenjoyer-python-a7b8frccccbygcbp.polandcentral-01.azurewebsites.net/health)
           echo "HTTP Status: $STATUS_CODE"
           if [[ $STATUS_CODE -lt 200 || $STATUS_CODE -ge 400 ]]; then
             echo "Health check failed"

@@ -1,13 +1,14 @@
-print ("Hej Github, oto prosta zmiana pliku")
+from flask import Flask
 
-def pokaz_menu():
-    print("1. Strona główna")
-    print("2. O nas")
-    print("3. Kontakt")
+app = Flask(__name__)
 
-pokaz_menu()
+@app.route("/")
+def home():
+    return "Hello from CI/CD deployed app!"
 
-def pokaz_autora():
-	print ("Autor: Szymon Rochowicz")
+@app.route("/health")
+def health():
+    return "OK", 200
 
-pokaz_autora()
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
