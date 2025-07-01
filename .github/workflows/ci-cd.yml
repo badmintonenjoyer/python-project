@@ -24,6 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run tests
+        run: |
+          pytest tests/
+
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
@@ -33,16 +37,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Zip code for deployment
+        run: zip -r release.zip . -x "venv/*" ".git/*" ".github/*"
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: badmintonenjoyer-python
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+          package: release.zip
 
       - name: Health check - verify app is up
         run: |
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" badmintonenjoyer-python-a7b8frccccbygcbp.polandcentral-01.azurewebsites.net/health)
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://badmintonenjoyer-python-a7b8frccccbygcbp.polandcentral-01.azurewebsites.net/)
           echo "HTTP Status: $STATUS_CODE"
           if [[ $STATUS_CODE -lt 200 || $STATUS_CODE -ge 400 ]]; then
             echo "Health check failed"
