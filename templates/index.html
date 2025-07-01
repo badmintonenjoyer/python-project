@@ -1,26 +1,75 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8" />
-    <title>Moja Aplikacja</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f8ff;
-            color: #333;
-            text-align: center;
-            margin-top: 50px;
-        }
-        h1 {
-            color: #007acc;
-        }
-        p {
-            font-size: 1.2em;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Prosty Kalkulator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6b73ff, #000dff);
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    form {
+      margin: 20px auto;
+      max-width: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input[type="number"] {
+      width: 100px;
+      padding: 8px;
+      margin: 5px;
+      border-radius: 5px;
+      border: none;
+      font-size: 1em;
+    }
+    button {
+      background: #ffd700;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+    .error {
+      color: #ff6347;
+      margin-top: 15px;
+    }
+    footer {
+      margin-top: 40px;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
-    <h1>Witamy w mojej aplikacji!</h1>
-    <p>To jest prosty i ładny interfejs startowy.</p>
+  <h1>Prosty Kalkulator</h1>
+  <form method="post" action="/calculate">
+    <input type="number" step="any" name="num1" placeholder="Liczba 1" value="{{ num1 if num1 is defined else '' }}" required />
+    <input type="number" step="any" name="num2" placeholder="Liczba 2" value="{{ num2 if num2 is defined else '' }}" required />
+    <br/>
+    <button type="submit">Dodaj</button>
+  </form>
+
+  {% if result is defined %}
+    <div class="result">Wynik: {{ result }}</div>
+  {% endif %}
+  
+  {% if error is defined %}
+    <div class="error">{{ error }}</div>
+  {% endif %}
+
+  <footer>Powered by Render &amp; GitHub Actions</footer>
 </body>
 </html>
