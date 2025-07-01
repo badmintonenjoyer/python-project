@@ -1,10 +1,9 @@
 services:
   - type: web
-    name: python-flask-app
+    name: python-on-render
     env: python
-    buildCommand: ""
-    startCommand: gunicorn main:app
-    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn src.main:app
     autoDeploy: true
     envVars:
       - key: FLASK_ENV
