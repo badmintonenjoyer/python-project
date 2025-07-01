@@ -5,6 +5,12 @@ Zawiera prosty kalkulator potęgowania oraz pełne wdrożenie CI/CD na platformi
 
 ![Screenshot aplikacji](screenshot.png)
 
+## Dokumentacja
+
+- [Workflow CI/CD](WORKFLOW.md)
+- [Konfiguracja środowiska](ENVIRONMENT.md)
+
+
 ---
 
 ## Deployment – Render + GitHub Actions
@@ -65,6 +71,6 @@ from kalkulator import poteguj
 print(poteguj(2, 3))  # wynik: 8
 
 ## 👨‍💻 Autor
-Szymon Rochowicz
+Szymon Rochowicz,
 GitHub – @badmintonenjoyer
 📧 wrx86272@student.wroclaw.merito.pl
