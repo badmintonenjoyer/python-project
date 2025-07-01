@@ -28,3 +28,28 @@ jobs:
       - name: Run tests
         run: |
           pytest tests/
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Trigger deploy on Render
+        run: |
+          curl -X POST "https://api.render.com/deploy/srv-d1i0pu24d50c73egqc2g" \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+
+      - name: Wait for deployment to start
+        run: sleep 10 
+
+      - name: Health check - verify app is up
+        run: |
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://python-project-a0z3.onrender.com/health")
+          echo "HTTP Status: $STATUS_CODE"
+          if [[ $STATUS_CODE -lt 200 || $STATUS_CODE -ge 400 ]]; then
+            echo "Health check failed"
+            exit 1
+          else
+            echo "Health check succeeded"
+          fi
