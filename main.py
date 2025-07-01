@@ -1,11 +1,10 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "Hello from Azure!"
-
-@app.route("/health")
+@app.route('/health')
 def health():
-    return "OK", 200
+    return jsonify(status="ok"), 200
+
+if __name__ == "__main__":
+    app.run()
