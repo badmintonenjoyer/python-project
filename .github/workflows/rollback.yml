@@ -1,10 +1,10 @@
-name: Manual Rollback
+name: Rollback Deployment
 
 on:
   workflow_dispatch:
     inputs:
       commit_sha:
-        description: 'Commit SHA to rollback to'
+        description: 'Commit SHA or branch/tag to rollback to'
         required: true
         default: 'main'
 
@@ -13,14 +13,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout specific commit
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.inputs.commit_sha }}
+      - name: Trigger rollback deploy on Render
+        run: |
+          RESPONSE=$(curl -s -o response.txt -w "%{http_code}" -X POST "https://api.render.com/deploy/srv-d1i0pu24d50c73egqc2g/deploys" \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"commitHash\": \"${{ github.event.inputs.commit_sha }}\"}")
+          echo "Response status: $RESPONSE"
+          if [ "$RESPONSE" != "200" ] && [ "$RESPONSE" != "201" ]; then
+            echo "Rollback deploy failed"
+            cat response.txt
+            exit 1
+          fi
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: badmintonenjoyer-python
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+      - name: Wait for deployment to start
+        run: sleep 30
+
+      - name: Health check after rollback
+        run: |
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://python-project-a0z3.onrender.com/health")
+          echo "HTTP Status: $STATUS_CODE"
+          if [[ $STATUS_CODE -lt 200 || $STATUS_CODE -ge 400 ]]; then
+            echo "Health check failed after rollback"
+            exit 1
+          else
+            echo "Health check succeeded after rollback"
+          fi
